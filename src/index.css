@@ -1,0 +1,313 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap");
+@import "tailwindcss";
+
+/*
+Design tokens 
+*/
+
+/*change this later*/
+/*TODO: too lavender, change*/
+:root {
+    --blush-mid: #f0a8c0;
+    --blush: #fde8f0;
+    --blush-light: #fff4f8;
+    --pink: #d4457a;
+    --pink-deep: #b03165;
+    --plum: #2e1f52;
+    --text-soft: #8a5c70;
+    --text-muted: #be94a4;
+    --cream: #fffcfd;
+}
+
+/*Base*/
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
+
+/*Navbar*/
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 60px;
+    background: rgba(255, 252, 253, 0.82);
+    backdrop-filter: blue(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid rgba(240, 168, 192, 0.2);
+}
+
+.nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--plum);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    user-select: none;
+}
+
+.nav-logo span {
+    color: var(--pink);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    list-style: none;
+}
+
+.nav-links a {
+    display: block;
+    padding: 7px 13px;
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--text-soft);
+    text-decoration: none;
+    border-radius: 20px;
+    transition: background 0.18s, color 0.18s;
+
+}
+
+.nav-links a:hover {
+    background: var(--blush);
+    color: var(--pink-deep);
+}
+
+.nav-links .cta {
+    background: var(--pink);
+    color: #fff;
+    font-weight: 500;
+    margin-left: 6px;
+}
+
+.nav-links .cta:hover {
+    background: var(--pink-deep);
+}
+
+/*Hamburger menu -- this is hidden on Desktop but visible on Mobile*/
+.nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: var(--plum);
+    border-radius: 2px;
+    transition: all 0.25s;
+}
+
+/*Hero Section!*/
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+    padding-top: 60px;
+}
+
+.hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            transparent 42%,
+            rgba(255, 252, 253, 0.55) 62%,
+            rgba(253, 252, 253, 0.95) 78%,
+            rgba(255, 252, 255, 1) 100%);
+    pointer-events: none;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 24px;
+    max-width: 740px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    /*TODO: might need to change */
+    color: var(--pink);
+    background: rgba(252, 232, 248, 0.88);
+    border: 1px solid rgba(240, 168, 192, 0.5);
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.7s 0.2s ease forwards;
+}
+
+.hero-eyebrow::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--pink);
+    display: block;
+}
+
+.hero-title {
+    font-family: 'Coromant Garamond', serif;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    font-weight: 300;
+    line-height: 1.06;
+    color: var(--plum);
+    margin-bottom: 20x;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: rise 0.8s 0.4s ease forwards;
+}
+
+.hero-title em {
+    font-style: italic;
+    color: var(--pink);
+}
+
+.hero-sub {
+    font-size: clamp(0.88rem, 2vw, 1rem);
+    line-height: 1.75;
+    color: var(--text-soft);
+    font-weight: 300;
+    max-width: 460px;
+    margin: 0 auto 36px;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: rise 0.8s 0.6s ease forwards;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: tranlateY(14px);
+    animation: rise 0.8s 0.8s ease forwards;
+}
+
+/*Stats - Use Prospectus*/
+.stats-grip {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    padding: 0 24px 80px;
+    opacity: 0;
+    animation: rise 0.8s 1s ease forwards;
+}
+
+.stat {
+    text-align: center;
+    padding: 0 32px;
+    position: relative;
+}
+
+.stat+.stat::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    bottom: 15%;
+    width: 1px;
+    background: rgba(196, 176, 232, 0.35);
+}
+
+.stat-num {
+    font-family: 'Coromant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--plum);
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 4px;
+
+}
+
+/*Scroll Indicator*/
+.scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    animation: rise 0.8s 1.2s ease forwards;
+}
+
+.scroll-hint span {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.scroll-line {
+    width: 1px;
+    height: 36px;
+    background: linear-gradient(to bottom, var(--lavender), transparent);
+    animation: scrollPulse 2s 1.5s ease-in-out infinite;
+}
+
+
+/* Buttons - reusable, import at any component */
