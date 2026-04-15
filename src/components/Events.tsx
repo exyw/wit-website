@@ -39,7 +39,7 @@ const EVENTS: ClubEvent[] = [
         name: 'Networking Social',
         date: '2026-04-28',
         caption: 'Join us for an evening of connections, conversations, and career opportunities with students, alumni, and sponsors.',
-        image: '',
+        image: 'src/assets/events/networkingSocial.webp',
         humanitixUrl: 'https://events.humanitix.com/networking-social-gjxcusfs?_gl=1*r9rjya*_gcl_aw*R0NMLjE3NzYxNTU3OTEuQ2owS0NRand5X2ZPQmhDNkFSSXNBSEtGQjc4Rk42ZDIwNFIwWnN5c1UwZ3NvWXBKV1Y3N01wdDEtTGdLR2xhRjItWlphQk9vUkNGRkZSY2FBc3dZRUFMd193Y0I.*_gcl_au*MTkwMzY4ODAyOC4xNzc2MTU1Nzkx*_ga*MTA5OTU3MzUwMi4xNzc2MTU1Nzkx*_ga_LHKW5FR9N6*czE3NzYyMjk1MTkkbzUkZzEkdDE3NzYyMjk1MjUkajU0JGwwJGgw',
         location: 'Melbourne Connect, Carlton',
         format: 'Networking Social',
@@ -155,9 +155,6 @@ export default function Events() {
                                     <span>{heroEvent.name}</span>
                                 </div>
                             )}
-                            <div className="events-hero-media-overlay">
-                                <h3 className="events-hero-media-title">{heroEvent.name}</h3>
-                            </div>
                         </div>
                     </div>
 

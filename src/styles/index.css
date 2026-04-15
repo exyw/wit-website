@@ -1083,33 +1083,17 @@ footer p {
     color: rgba(255, 255, 255, 0.96);
 }
 
-.events-hero-media-overlay {
-    position: absolute;
-    inset: auto 0 0 0;
-    z-index: 3;
-    display: flex;
-    justify-content: flex-end;
-    padding: 110px 42px 28px;
-    background: linear-gradient(180deg, rgba(46, 31, 82, 0) 0%, rgba(46, 31, 82, 0.12) 45%, rgba(46, 31, 82, 0.82) 100%);
-}
-
-.events-hero-media-title {
-    max-width: min(42%, 340px);
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 3.6vw, 3rem);
-    font-weight: 500;
-    line-height: 0.94;
-    text-align: right;
-    color: #fff;
-}
-
 .events-hero-content {
     position: relative;
     z-index: 4;
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(0, 440px) minmax(420px, 620px);
+    gap: 32px 44px;
+    align-items: start;
 }
 
 .events-hero-intro {
+    grid-column: 1;
     position: relative;
     max-width: 500px;
     margin-left: -45px;
@@ -1139,14 +1123,18 @@ footer p {
 }
 
 .events-hero-types {
-    margin-top: 28px;
+    grid-column: 2;
+    grid-row: 1;
+    max-width: none;
+    margin-top: 10px;
+    margin-left: 80px;
     padding-top: 0;
 }
 
 .events-hero-types-list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0 28px;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
     margin-top: 10px;
 }
 
@@ -1447,9 +1435,18 @@ footer p {
 }
 
 @media (max-width: 1100px) {
+    .events-hero-content {
+        display: block;
+    }
+
     .events-hero-intro {
         margin-left: -12px;
         margin-top: -96px;
+    }
+
+    .events-hero-types {
+        max-width: none;
+        margin-top: 28px;
     }
 
     .events-grid {
@@ -1499,14 +1496,6 @@ footer p {
         aspect-ratio: 1034 / 522;
     }
 
-    .events-hero-media-overlay {
-        padding: 84px 30px 22px;
-    }
-
-    .events-hero-media-title {
-        max-width: 56%;
-    }
-
     .events-toggle {
         width: 100%;
         max-width: 560px;
@@ -1525,15 +1514,6 @@ footer p {
 
     .events-hero-media-card {
         aspect-ratio: 1034 / 522;
-    }
-
-    .events-hero-media-overlay {
-        padding: 56px 18px 16px;
-    }
-
-    .events-hero-media-title {
-        max-width: 66%;
-        font-size: 1.5rem;
     }
 
     .events-toggle {
