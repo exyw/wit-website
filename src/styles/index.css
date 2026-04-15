@@ -1501,7 +1501,16 @@ footer p {
 }
 
 .leadership-grid--executives {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.leadership-grid--executives .leadership-card {
+    flex: 0 1 calc((100% - 54px) / 4);
+    max-width: calc((100% - 54px) / 4);
+    min-width: 0;
 }
 
 .leadership-grid--directors {
@@ -1517,13 +1526,13 @@ footer p {
 }
 
 .leadership-card {
-    display: flex;
-    flex-direction: column;
+    position: relative;
     overflow: hidden;
-    min-height: 100%;
+    min-height: 420px;
+    aspect-ratio: 4 / 5.7;
     border-radius: 24px;
     border: 1px solid rgba(240, 168, 192, 0.22);
-    background: linear-gradient(180deg, #fff 0%, rgba(255, 244, 248, 0.85) 100%);
+    background: #fff;
     transition: transform 0.24s, box-shadow 0.24s, border-color 0.24s;
 }
 
@@ -1534,21 +1543,47 @@ footer p {
 }
 
 .leadership-card-photo {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.28), transparent 26%),
+        linear-gradient(145deg, rgba(212, 69, 122, 0.58), rgba(46, 31, 82, 0.82));
+}
+
+.leadership-card-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
     display: flex;
     align-items: flex-end;
     padding: 24px;
-    aspect-ratio: 4 / 4.5;
-    background:
-        radial-gradient(circle at top right, rgba(255, 255, 255, 0.28), transparent 26%),
-        linear-gradient(145deg, rgba(212, 69, 122, 0.5), rgba(46, 31, 82, 0.78));
+    padding-bottom: 110px;
+    background: linear-gradient(180deg, rgba(46, 31, 82, 0.04) 0%, rgba(46, 31, 82, 0.72) 68%, rgba(46, 31, 82, 0.94) 100%);
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.26s ease, transform 0.26s ease;
 }
 
 .leadership-card-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
     display: flex;
-    flex: 1;
     flex-direction: column;
-    gap: 12px;
-    padding: 24px;
+    gap: 8px;
+    padding: 56px 24px 24px;
+    background: linear-gradient(180deg, rgba(46, 31, 82, 0) 0%, rgba(46, 31, 82, 0.52) 42%, rgba(46, 31, 82, 0.9) 100%);
+    transition: transform 0.26s ease;
+}
+
+.leadership-card-role {
+    color: rgba(252, 232, 240, 0.84);
+}
+
+.leadership-card-copy {
+    color: rgba(255, 244, 248, 0.94);
 }
 
 .leadership-card-name,
@@ -1561,6 +1596,25 @@ footer p {
     font-size: 1.65rem;
     font-weight: 500;
     line-height: 1.05;
+    color: #fff;
+}
+
+.leadership-card:focus-visible {
+    outline: 2px solid rgba(212, 69, 122, 0.55);
+    outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .leadership-card:hover .leadership-card-overlay,
+    .leadership-card:focus-visible .leadership-card-overlay {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .leadership-card:hover .leadership-card-body,
+    .leadership-card:focus-visible .leadership-card-body {
+        transform: translateY(-4px);
+    }
 }
 
 .officer-grid {
@@ -1675,6 +1729,7 @@ footer p {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .leadership-grid--executives .leadership-card,
     .leadership-grid--directors .leadership-card {
         flex: initial;
         max-width: none;
@@ -1704,6 +1759,10 @@ footer p {
         flex-direction: column;
         align-items: flex-start;
     }
+
+    .leadership-card {
+        min-height: 380px;
+    }
 }
 
 @media (max-width: 560px) {
@@ -1714,7 +1773,15 @@ footer p {
         grid-template-columns: 1fr;
     }
 
-    .leadership-card-photo {
-        aspect-ratio: 4 / 3.7;
+    .leadership-card {
+        min-height: 360px;
+        aspect-ratio: 4 / 5.2;
+    }
+}
+
+@media (hover: none) {
+    .leadership-card-overlay {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

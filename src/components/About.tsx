@@ -168,12 +168,14 @@ function getInitials(role: string) {
 
 function LeadershipCard({ member }: { member: TeamMember }) {
     return (
-        <article className="leadership-card">
+        <article className="leadership-card" tabIndex={0}>
             <div className="leadership-card-photo" aria-hidden="true" />
+            <div className="leadership-card-overlay">
+                <p className="leadership-card-copy">{member.blurb}</p>
+            </div>
             <div className="leadership-card-body">
                 <p className="leadership-card-role">{member.role}</p>
                 <h4 className="leadership-card-name">{member.name}</h4>
-                <p className="leadership-card-copy">{member.blurb}</p>
             </div>
         </article>
     )
