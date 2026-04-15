@@ -1372,3 +1372,375 @@ footer p {
         left: 12px;
     }
 }
+
+/* ================================================================
+   ABOUT PAGE
+   ================================================================ */
+.about-page {
+    position: relative;
+    overflow: hidden;
+    padding: 108px 40px 90px;
+    background:
+        radial-gradient(circle at top left, rgba(240, 168, 192, 0.16), transparent 24%),
+        radial-gradient(circle at right center, rgba(46, 31, 82, 0.05), transparent 22%),
+        linear-gradient(180deg, rgba(255, 244, 248, 0.72) 0%, var(--cream) 18%, var(--cream) 100%);
+}
+
+.about-page-inner {
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.about-header {
+    max-width: 760px;
+    text-align: center;
+    margin: 0 auto 44px;
+}
+
+.about-header .section-heading {
+    margin-bottom: 18px;
+}
+
+.about-lead {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: var(--text-soft);
+    font-weight: 300;
+}
+
+.about-mission {
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.9fr);
+    gap: 20px;
+    margin-bottom: 28px;
+}
+
+.about-mission-card,
+.about-mission-sidecard,
+.about-team-section {
+    border-radius: 30px;
+    border: 1px solid rgba(240, 168, 192, 0.24);
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 20px 44px rgba(46, 31, 82, 0.08);
+}
+
+.about-mission-card {
+    position: relative;
+    padding: 36px;
+    overflow: hidden;
+}
+
+.about-mission-card::after {
+    content: '';
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(240, 168, 192, 0.2), var(--pink), rgba(240, 168, 192, 0.2));
+}
+
+.about-mission-label,
+.about-mission-sidecard-label,
+.about-team-kicker,
+.leadership-card-role,
+.officer-card-role {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.about-mission-label,
+.about-mission-sidecard-label,
+.about-team-kicker,
+.leadership-card-role {
+    color: var(--pink-deep);
+}
+
+.about-mission-title,
+.about-team-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.9rem, 3vw, 2.6rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--plum);
+}
+
+.about-mission-title {
+    margin-top: 12px;
+    margin-bottom: 14px;
+}
+
+.about-mission-copy,
+.about-mission-sidecard-copy,
+.about-team-copy,
+.leadership-card-copy,
+.officer-card-copy {
+    font-size: 0.92rem;
+    line-height: 1.72;
+    color: var(--text-soft);
+    font-weight: 300;
+}
+
+.about-mission-sidecard {
+    padding: 30px 28px;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.about-mission-sidecard-copy {
+    margin-top: 12px;
+}
+
+.about-team-section {
+    padding: 32px;
+}
+
+.about-team-section + .about-team-section {
+    margin-top: 24px;
+}
+
+.about-team-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.about-team-title {
+    margin-top: 10px;
+}
+
+.about-team-copy {
+    max-width: 470px;
+}
+
+.leadership-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.leadership-grid--executives {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.leadership-grid--directors {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 22px;
+}
+
+.leadership-grid--directors .leadership-card {
+    flex: 0 1 calc((100% - 66px) / 4);
+    max-width: calc((100% - 66px) / 4);
+}
+
+.leadership-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 100%;
+    border-radius: 24px;
+    border: 1px solid rgba(240, 168, 192, 0.22);
+    background: linear-gradient(180deg, #fff 0%, rgba(255, 244, 248, 0.85) 100%);
+    transition: transform 0.24s, box-shadow 0.24s, border-color 0.24s;
+}
+
+.leadership-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 69, 122, 0.34);
+    box-shadow: 0 18px 36px rgba(212, 69, 122, 0.12);
+}
+
+.leadership-card-photo {
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+    aspect-ratio: 4 / 4.5;
+    background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.28), transparent 26%),
+        linear-gradient(145deg, rgba(212, 69, 122, 0.5), rgba(46, 31, 82, 0.78));
+}
+
+.leadership-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 12px;
+    padding: 24px;
+}
+
+.leadership-card-name,
+.officer-card-name {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--plum);
+}
+
+.leadership-card-name {
+    font-size: 1.65rem;
+    font-weight: 500;
+    line-height: 1.05;
+}
+
+.officer-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.subcommittee-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.subcommittee-group {
+    padding-top: 22px;
+    border-top: 1px solid rgba(240, 168, 192, 0.18);
+}
+
+.subcommittee-group:first-child {
+    padding-top: 0;
+    border-top: 0;
+}
+
+.subcommittee-group-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 18px;
+}
+
+.subcommittee-group-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 500;
+    line-height: 1.05;
+    color: var(--plum);
+}
+
+.subcommittee-group-copy {
+    max-width: 520px;
+    font-size: 0.9rem;
+    line-height: 1.68;
+    color: var(--text-soft);
+    font-weight: 300;
+}
+
+.officer-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 100%;
+    padding: 22px 20px;
+    border-radius: 22px;
+    border: 1px solid rgba(240, 168, 192, 0.22);
+    background: #fff;
+    transition: transform 0.22s, box-shadow 0.22s, border-color 0.22s;
+}
+
+.officer-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(212, 69, 122, 0.32);
+    box-shadow: 0 14px 30px rgba(212, 69, 122, 0.1);
+}
+
+.officer-card-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 18px;
+    background: linear-gradient(145deg, rgba(240, 168, 192, 0.26), rgba(212, 69, 122, 0.16));
+    color: var(--pink-deep);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.officer-card-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.officer-card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.officer-card-name {
+    font-size: 1.35rem;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+@media (max-width: 1100px) {
+    .about-mission {
+        grid-template-columns: 1fr;
+    }
+
+    .leadership-grid,
+    .leadership-grid--executives,
+    .leadership-grid--directors,
+    .officer-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .leadership-grid--directors .leadership-card {
+        flex: initial;
+        max-width: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-page {
+        padding: 88px 20px 60px;
+    }
+
+    .about-mission-card,
+    .about-team-section {
+        padding: 24px;
+    }
+
+    .about-mission-sidecard {
+        padding: 24px;
+    }
+
+    .about-team-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .subcommittee-group-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 560px) {
+    .leadership-grid,
+    .leadership-grid--executives,
+    .leadership-grid--directors,
+    .officer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .leadership-card-photo {
+        aspect-ratio: 4 / 3.7;
+    }
+}
