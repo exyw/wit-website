@@ -983,19 +983,184 @@ footer p {
    EVENTS PAGE
    ================================================================ */
 .events-page {
+    --events-page-surface: linear-gradient(180deg, rgba(255, 244, 248, 0.82) 0%, var(--cream) 20%, var(--cream) 100%);
     position: relative;
     overflow: hidden;
     padding: 108px 40px 90px;
     background:
         radial-gradient(circle at top right, rgba(240, 168, 192, 0.18), transparent 28%),
         radial-gradient(circle at top left, rgba(46, 31, 82, 0.05), transparent 22%),
-        linear-gradient(180deg, rgba(255, 244, 248, 0.82) 0%, var(--cream) 20%, var(--cream) 100%);
+        var(--events-page-surface);
 }
 
 .events-page-inner {
     position: relative;
     max-width: 1120px;
     margin: 0 auto;
+}
+
+.events-hero {
+    position: relative;
+    margin-bottom: 62px;
+}
+
+.events-hero::before {
+    content: '';
+    position: absolute;
+    top: 96px;
+    right: -70px;
+    width: min(32vw, 320px);
+    height: min(32vw, 320px);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240, 168, 192, 0.18) 0%, rgba(240, 168, 192, 0) 72%);
+    pointer-events: none;
+}
+
+.events-hero-media-bleed {
+    position: relative;
+    left: 50%;
+    width: min(90vw, 1280px);
+    margin-bottom: 18px;
+    transform: translateX(-50%);
+}
+
+.events-hero-kicker,
+.events-hero-type-name,
+.events-hero-types-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.events-hero-kicker,
+.events-hero-type-name,
+.events-hero-types-label {
+    color: var(--pink-deep);
+}
+
+.events-hero-media-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1034 / 522;
+    background: transparent;
+    filter: drop-shadow(0 32px 64px rgba(46, 31, 82, 0.14));
+    -webkit-mask: url('../assets/events/FeatureCutOut.svg') center / 100% 100% no-repeat;
+    mask: url('../assets/events/FeatureCutOut.svg') center / 100% 100% no-repeat;
+}
+
+.events-hero-media-card::before,
+.events-hero-media-card::after {
+    content: none;
+}
+
+.events-hero-media-card img,
+.events-hero-media-placeholder {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.events-hero-media-card img {
+    object-fit: cover;
+}
+
+.events-hero-media-placeholder {
+    display: flex;
+    align-items: flex-end;
+    padding: 34px;
+    background:
+        radial-gradient(circle at top right, rgba(255, 255, 255, 0.36), transparent 26%),
+        linear-gradient(145deg, rgba(212, 69, 122, 0.58), rgba(46, 31, 82, 0.84));
+}
+
+.events-hero-media-placeholder span {
+    max-width: 340px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.1rem, 4vw, 3rem);
+    line-height: 0.92;
+    color: rgba(255, 255, 255, 0.96);
+}
+
+.events-hero-media-overlay {
+    position: absolute;
+    inset: auto 0 0 0;
+    z-index: 3;
+    display: flex;
+    justify-content: flex-end;
+    padding: 110px 42px 28px;
+    background: linear-gradient(180deg, rgba(46, 31, 82, 0) 0%, rgba(46, 31, 82, 0.12) 45%, rgba(46, 31, 82, 0.82) 100%);
+}
+
+.events-hero-media-title {
+    max-width: min(42%, 340px);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.6vw, 3rem);
+    font-weight: 500;
+    line-height: 0.94;
+    text-align: right;
+    color: #fff;
+}
+
+.events-hero-content {
+    position: relative;
+    z-index: 4;
+    display: block;
+}
+
+.events-hero-intro {
+    position: relative;
+    max-width: 500px;
+    margin-left: -45px;
+    margin-top: -140px;
+}
+
+.events-hero-title {
+    margin-top: 12px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.3rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 0.96;
+    color: var(--plum);
+}
+
+.events-hero-title em {
+    color: var(--pink);
+    font-style: italic;
+}
+
+.events-hero-lead {
+    margin-top: 18px;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-soft);
+    font-weight: 300;
+}
+
+.events-hero-types {
+    margin-top: 28px;
+    padding-top: 0;
+}
+
+.events-hero-types-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 28px;
+    margin-top: 10px;
+}
+
+.events-hero-type-row {
+    padding: 18px 0 20px;
+    border-top: 1px solid rgba(240, 168, 192, 0.22);
+}
+
+.events-hero-type-copy {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    line-height: 1.68;
+    color: var(--text-soft);
+    font-weight: 300;
 }
 
 .events-header {
@@ -1072,7 +1237,7 @@ footer p {
 }
 
 .events-panel {
-    padding: 32px;
+    padding: 28px;
     border-radius: 32px;
     border: 1px solid rgba(240, 168, 192, 0.24);
     background: rgba(255, 255, 255, 0.56);
@@ -1282,12 +1447,21 @@ footer p {
 }
 
 @media (max-width: 1100px) {
+    .events-hero-intro {
+        margin-left: -12px;
+        margin-top: -96px;
+    }
+
     .events-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 900px) {
+    .events-hero-types-list {
+        grid-template-columns: 1fr;
+    }
+
     .events-grid {
         grid-template-columns: 1fr;
     }
@@ -1303,6 +1477,36 @@ footer p {
         padding: 88px 20px 60px;
     }
 
+    .events-hero {
+        margin-bottom: 48px;
+    }
+
+    .events-panel {
+        padding: 24px;
+    }
+
+    .events-hero-media-bleed {
+        width: 90vw;
+        margin-bottom: 28px;
+    }
+
+    .events-hero-intro {
+        margin-left: -8px;
+        margin-top: -74px;
+    }
+
+    .events-hero-media-card {
+        aspect-ratio: 1034 / 522;
+    }
+
+    .events-hero-media-overlay {
+        padding: 84px 30px 22px;
+    }
+
+    .events-hero-media-title {
+        max-width: 56%;
+    }
+
     .events-toggle {
         width: 100%;
         max-width: 560px;
@@ -1311,13 +1515,27 @@ footer p {
     .events-toggle-button {
         min-width: 0;
     }
-
-    .events-panel {
-        padding: 24px;
-    }
 }
 
 @media (max-width: 480px) {
+    .events-hero-intro {
+        margin-left: -4px;
+        margin-top: -52px;
+    }
+
+    .events-hero-media-card {
+        aspect-ratio: 1034 / 522;
+    }
+
+    .events-hero-media-overlay {
+        padding: 56px 18px 16px;
+    }
+
+    .events-hero-media-title {
+        max-width: 66%;
+        font-size: 1.5rem;
+    }
+
     .events-toggle {
         gap: 6px;
         padding: 6px;

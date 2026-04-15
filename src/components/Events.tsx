@@ -6,9 +6,32 @@ type ClubEvent = {
     caption: string
     image: string
     humanitixUrl: string
+    location: string
+    format: string
+    heroHighlight: string
+    isFeaturedHero?: boolean
 }
 
 type EventSectionTone = 'upcoming' | 'past'
+
+const EVENT_TYPES = [
+    {
+        name: 'Workshops',
+        description: 'Hands-on sessions that help members build practical confidence with tools, code, and technical problem solving.',
+    },
+    {
+        name: 'Networking',
+        description: 'Industry mixers and sponsor-led events designed to make meeting people in tech feel approachable and useful.',
+    },
+    {
+        name: 'Social Events',
+        description: 'Low-pressure community events that help members make friends, settle in, and feel part of something bigger.',
+    },
+    {
+        name: 'Competitions',
+        description: 'Challenge-based events that bring problem solving, teamwork, and a little bit of healthy pressure into the mix.',
+    },
+]
 
 // Store event photos in `src/assets/events/` and import them here when ready.
 const EVENTS: ClubEvent[] = [
@@ -18,6 +41,10 @@ const EVENTS: ClubEvent[] = [
         caption: 'Join us for an evening of connections, conversations, and career opportunities with students, alumni, and sponsors.',
         image: '',
         humanitixUrl: 'https://events.humanitix.com/networking-social-gjxcusfs?_gl=1*r9rjya*_gcl_aw*R0NMLjE3NzYxNTU3OTEuQ2owS0NRand5X2ZPQmhDNkFSSXNBSEtGQjc4Rk42ZDIwNFIwWnN5c1UwZ3NvWXBKV1Y3N01wdDEtTGdLR2xhRjItWlphQk9vUkNGRkZSY2FBc3dZRUFMd193Y0I.*_gcl_au*MTkwMzY4ODAyOC4xNzc2MTU1Nzkx*_ga*MTA5OTU3MzUwMi4xNzc2MTU1Nzkx*_ga_LHKW5FR9N6*czE3NzYyMjk1MTkkbzUkZzEkdDE3NzYyMjk1MjUkajU0JGwwJGgw',
+        location: 'Melbourne Connect, Carlton',
+        format: 'Networking Social',
+        heroHighlight: 'A relaxed flagship night to meet students, alumni, and sponsors in one room before semester gets busy.',
+        isFeaturedHero: true,
     },
     {
         name: 'Susquehanna Brainteaser Battle',
@@ -25,6 +52,9 @@ const EVENTS: ClubEvent[] = [
         caption: 'Take on a fast-paced puzzle night with team challenges, prizes, and a chance to meet recruiters in a low-pressure setting.',
         image: '',
         humanitixUrl: '',
+        location: 'Arts West Forum',
+        format: 'Challenge Night',
+        heroHighlight: 'Expect team-based problem solving, prizes, and a playful route into meeting recruiters.',
     },
     {
         name: 'WIT & Wisdom: HTML + CSS',
@@ -32,6 +62,9 @@ const EVENTS: ClubEvent[] = [
         caption: 'Want to build your own portfolio website but have no idea where to start? We got you. Join us for a beginner-friendly intro to HTML + CSS where you’ll learn the basics of portfolio website making in a fun and supportive space.',
         image: '',
         humanitixUrl: '',
+        location: 'Old Engineering Building',
+        format: 'Skills Workshop',
+        heroHighlight: 'A beginner-friendly technical session focused on building confidence through practical website basics.',
     },
     {
         name: 'WIT & Wisdom: Git 101',
@@ -39,6 +72,9 @@ const EVENTS: ClubEvent[] = [
         caption: 'Because the first one was so good... we had to run it again. If you missed it the first time or want a refresher, join us for another WiT & Wisdom session where we will break down the basics of Git in a beginner friendly space. Come learn something new, ask questions, and connect with other women in tech.',
         image: '',
         humanitixUrl: '',
+        location: 'Glyn Davis Building',
+        format: 'Technical Workshop',
+        heroHighlight: 'A practical refresher designed to make version control feel approachable rather than intimidating.',
     },
     {
         name: 'Wit & Wisdom: How to Survive Uni ft. Speed Friending',
@@ -46,6 +82,9 @@ const EVENTS: ClubEvent[] = [
         caption: 'We’re talking study tips, balancing life, and all the things no one really explains in first year. AND you’ll get to meet new people through speed friending because we are not doing uni alone this year.',
         image: '',
         humanitixUrl: '',
+        location: 'Student Precinct',
+        format: 'Community Social',
+        heroHighlight: 'Part orientation, part social, and designed to help members settle into uni with actual connection.',
     }
 ]
 
@@ -101,10 +140,52 @@ export default function Events() {
 
     const visibleEvents = eventsByView[activeView]
     const activeViewCopy = EVENT_VIEW_COPY[activeView]
+    const heroEvent = upcomingEvents.find((event) => event.isFeaturedHero) ?? upcomingEvents[0] ?? EVENTS[0]
 
     return (
         <section className="events-page">
             <div className="events-page-inner">
+                <section className="events-hero">
+                    <div className="events-hero-media-bleed">
+                        <div className="events-hero-media-card">
+                            {heroEvent.image ? (
+                                <img src={heroEvent.image} alt={heroEvent.name} loading="lazy" />
+                            ) : (
+                                <div className="events-hero-media-placeholder" aria-hidden="true">
+                                    <span>{heroEvent.name}</span>
+                                </div>
+                            )}
+                            <div className="events-hero-media-overlay">
+                                <h3 className="events-hero-media-title">{heroEvent.name}</h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="events-hero-content">
+                        <div className="events-hero-intro">
+                            <p className="events-hero-kicker">Events at WiT</p>
+                            <h2 className="events-hero-title">
+                                Workshops, socials, and flagship moments that make the club feel <em>alive</em>.
+                            </h2>
+                            <p className="events-hero-lead">
+                                Our calendar mixes technical learning, community-building, and industry connection. Across the semester we run events that help members build confidence, meet new people, and feel more at home in tech.
+                            </p>
+                        </div>
+
+                        <div className="events-hero-types">
+                            <p className="events-hero-types-label">What We Run</p>
+                            <div className="events-hero-types-list">
+                                {EVENT_TYPES.map((type) => (
+                                    <article className="events-hero-type-row" key={type.name}>
+                                        <p className="events-hero-type-name">{type.name}</p>
+                                        <p className="events-hero-type-copy">{type.description}</p>
+                                    </article>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
                 <div className="events-header">
                     <p className="section-kicker">Our Events</p>
                     <h2 className="section-heading">2026 <em>Events</em></h2>
@@ -135,7 +216,7 @@ export default function Events() {
                     </div>
                 </div>
 
-                <section className="events-panel" key={activeView}>
+                <section className="events-panel" id="events-collection" key={activeView}>
                     <div className="events-panel-head">
                         <div>
                             <p className={`events-panel-label events-panel-label--${activeView}`}>
